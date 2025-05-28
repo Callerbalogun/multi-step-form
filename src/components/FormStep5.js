@@ -1,6 +1,5 @@
 import IconThankYou from "../assets/images/icon-thank-you.svg";
 import CustomButton from "./CustomButton";
-import Footer from "./Footer";
 
 const FormStep5 = ({ summary }) => {
   let name = summary.user.name.split(" ")[0];
