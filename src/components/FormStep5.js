@@ -1,4 +1,6 @@
 import IconThankYou from "../assets/images/icon-thank-you.svg";
+import CustomButton from "./CustomButton";
+import Footer from "./Footer";
 
 const FormStep5 = ({ summary }) => {
   let name = summary.user.name.split(" ")[0];
@@ -12,6 +14,7 @@ const FormStep5 = ({ summary }) => {
         using our platform. If you ever need support, please feel free to
         contact us at support@loremgaming.com
       </p>
+      <CustomButton text={"Go Home"} onClick={() => window.location.reload()} />
     </div>
   );
 };

@@ -161,6 +161,7 @@ button.custom-btn {
   font: 15px ubuntu-medium;
   color: var(--Alabaster);
   background-color: var(--PastelBlue);
+  cursor: pointer;
 }
 button.custom-btn:hover {
   transform: scale(105%);
