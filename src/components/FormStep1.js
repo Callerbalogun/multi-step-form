@@ -17,22 +17,25 @@ const FormStep1 = ({ switchStepHandler, saveUserDetails }) => {
   });
 
   const saveUserDetailsHandler = () => {
-    let nameIsValid = userDetails.name.length > 1 ? true : false;
-    let mailIsValid =
-      userDetails.email.includes(".com") &&
-      userDetails.email.includes("@") &&
-      userDetails.email.length > 6 &&
-      true;
-    let phoneIsValid =
-      userDetails.Phone.toString().length > 9 &&
-      !isNaN(userDetails.Phone) &&
-      true;
+    const nameIsValid = /^[A-Za-z][A-Za-z\s'-]{0,48}[A-Za-z]$/.test(
+      userDetails.name.trim()
+    );
+    const mailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+      userDetails.email.trim()
+    );
+    const phoneIsValid = /^\+?[1-9]\d{1,14}$/.test(
+      userDetails.Phone.toString().replace(/\D/g, "")
+    );
 
     if (nameIsValid && mailIsValid && phoneIsValid) {
       saveUserDetails(userDetails);
       switchStepHandler("step 2");
     } else if (!nameIsValid) {
-      setError({ ...error, label: "name", text: "This field is required" });
+      setError({
+        ...error,
+        label: "name",
+        text: "required (maximum of 50 characters)",
+      });
     } else if (!mailIsValid) {
       setError({ ...error, label: "email", text: "Invalid email address" });
     } else if (!phoneIsValid) {
